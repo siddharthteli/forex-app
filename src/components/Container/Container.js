@@ -6,7 +6,7 @@ const Container =() => {
            <Cards/>
            <Cards/>
            <Cards/>
-           <Cards/>
+          
         </div>
     )
 }
