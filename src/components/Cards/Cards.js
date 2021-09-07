@@ -1,6 +1,6 @@
 import './Cards.css'
 
-const Cards = ({id,name,price}) => {
+const Cards = ({id_card,name,price}) => {
     return(
     <div className="card-container">
 
