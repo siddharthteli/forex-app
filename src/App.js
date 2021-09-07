@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Cards from './components/Cards/Cards.js'
+import Container from './components/Container/Container.js'
 function App() {
   return (
     <div className="App">
-      <Cards />
+      <Container />
     </div>
   );
 }

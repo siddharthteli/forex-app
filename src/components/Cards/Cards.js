@@ -2,6 +2,7 @@ import './Cards.css'
 
 const Cards = ({id_card,name,price}) => {
     return(
+        
     <div className="card-container">
         <div className="header-card">
            <h3 class="identifier">{id_card}</h3>
@@ -11,8 +12,6 @@ const Cards = ({id_card,name,price}) => {
         <h3>Current rate:</h3>
         <h3>{price}</h3>
         </div>
-         
-         
     </div>)
 
 }
@@ -20,7 +19,7 @@ const Cards = ({id_card,name,price}) => {
 Cards.defaultProps = {
     id_card:1,
     name:"BTC",
-    price:"12.30 Euro",
+    price:"12.30",
 }
 
 
