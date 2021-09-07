@@ -1,7 +1,7 @@
 .card-container {
     border: 2px rgb(221, 210, 210) solid;
-    width: 200px;
-    height: 150px;
+    width: 300px;
+    height: 250px;
     display: grid;
     grid-template-rows: 50% 50%;
     overflow: hidden;
@@ -10,17 +10,26 @@
     margin-top: 20px;
 }
 
+h3 {
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 15px;
+    margin-right: 20px;
+    text-align: left;
+}
+
 .header-card {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 40% 60%;
 }
 
 .section-card {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 50% 50%;
 }
 
 .identifier {
+    margin-left: 0px;
     border: 1px rgb(94, 64, 64) solid;
     width: 50px;
     height: 25px;
