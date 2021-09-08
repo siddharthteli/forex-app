@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-
+import Cards from "../Cards/Cards.js";
 class Container extends React.Component {
   constructor(props) {
     super(props);
@@ -24,20 +24,16 @@ class Container extends React.Component {
     for (var key in this.state.cards_list) {
       console.log("Key:" + key + "Value:" + this.state.cards_list[key]);
       let temp = {
-        a: key,
-        b: this.state.cards_list[key],
+        name: key,
+        price: this.state.cards_list[key],
       };
       listOf.push(temp);
     }
     return (
       <div>
-        <ul>
-          {listOf.map((card, idx) => (
-            <li key={idx}>
-              {card.a} {card.b}
-            </li>
-          ))}
-        </ul>
+        {listOf.map((card, idx) => (
+          <Cards id_card={idx} name={card.name} price={card.price} />
+        ))}
       </div>
     );
   }
