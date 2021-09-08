@@ -1,93 +1,68 @@
-import Cards from  '../Cards/Cards.js'
-import axios from 'axios';
-import './Container.css'
-import React, { useState } from 'react';
-import { Component } from 'react';
-
-// const Container = () => {
-//     const cartlist=[1,2,3,4,5];
-//     return(
-        
-//        cartlist.map((card) => 
-//            <h1>HEllo no is {card}</h1>
-//        )
-       
-       
-       
-//     )
-// }
+import axios from "axios";
+import React from "react";
 
 
-
-let cards_list=[];
-    let card;
-const Container =() => {
-
-
-        axios.get("http://api.exchangeratesapi.io/v1/latest?access_key=ea27f11e67cc1a6cb6d066300def6963&format=1").then(
-            (response) => {
+class Container extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state={
+            cards_list:[]
+        };
+    }
+    componentDidMount() {
+        axios.get("http://api.exchangeratesapi.io/v1/latest?access_key=ea27f11e67cc1a6cb6d066300def6963&format=1")
+        .then(response => {
                 let rates=response.data.rates;
-                for (var key in rates) {
-                    card= {
-                        "name":key,
-                        "rate":rates[key],
-                    }
-                    cards_list.push(card);
-                    
+                  this.setState({ cards_list:[rates] },()=>{
+                      console.log(this.state.cards_list)
+                  });
+                  console.log(this.state.cards_list);
+
                 }
-                
-                
-                
-                }
-        );  
-        const cartlist=[1,2,3,4,5];
-        return(
-        
-                   cartlist.map((card) => 
-                       <h1>HEllo no is {card}</h1>
-                   ))
-        // return ({cards_list}) => (
-        //     <>
-        //       {cards_list.map(card => (
-        //         <div key={card.cname}>hhh{card.name}</div>
-        //       ))}
-        //     </>
-        //   );
-        // return (
-        //     <>
-        //   { cards_list.map((card) => 
-        //                <h6>HEllo no is {card.name}</h6>
-        //             )
-                    
-        //    } </> ) 
-           
-
-
-        }
-
-
-// const Container =() => {
-//     const [count,setcount]=useState(1);
-//     React.useEffect(() => {
-//         axios.get(`http://api.exchangeratesapi.io/v1/latest?access_key=ea27f11e67cc1a6cb6d066300def6963&format=1`).then((response) => {
-//           console.log("Get getting called")
-//           setcount(response);
-//         });
-//       }, []);
-//       if (!count) return null;
-//     return(
-        
-//         <div className="grid-wrapper">
-//             <h1>{count.rates} </h1>
-//            <Cards/>
-//            <Cards/>
-//            <Cards/>
+        ); 
+       
+      }
+    render() {
+      return <div>
+          <ul>
+              {this.state.cards_list.map((card,idx) =>
+                  <li key={idx}>{Object.keys(card)}</li>
+              )}
+          </ul>
           
-//         </div>
-//     )
-// }
+      </div>;
+    }
 
+    
+  }
+
+  export default Container;
+
+
+// import React from 'react';
+
+// import axios from 'axios';
+
+// export default class Container extends React.Component {
+//   state = {
+//     persons: []
+//   }
+
+//   componentDidMount() {
+//     axios.get(`http://api.exchangeratesapi.io/v1/latest?access_key=ea27f11e67cc1a6cb6d066300def6963&format=1`)
+//       .then(res => {
+//         const persons = res.data.rates;
+//         this.setState({ persons });
+//       })
+//   }
+
+//   render() {
+//     return (
+//       <ul>
+//         { this.state.persons.map(person => <li>{person["AED"]}</li>)}
+//       </ul>
+//     )
+//   }
+// }
 
  
-
-export default Container;
