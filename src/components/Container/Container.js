@@ -6,14 +6,14 @@ class Container extends React.Component {
     constructor (props) {
         super(props);
         this.state={
-            cards_list:[]
+            cards_list:{}
         };
     }
     componentDidMount() {
         axios.get("http://api.exchangeratesapi.io/v1/latest?access_key=ea27f11e67cc1a6cb6d066300def6963&format=1")
         .then(response => {
                 let rates=response.data.rates;
-                  this.setState({ cards_list:[rates] },()=>{
+                  this.setState({ cards_list:rates },()=>{
                       console.log(this.state.cards_list)
                   });
                   console.log(this.state.cards_list);
@@ -23,16 +23,19 @@ class Container extends React.Component {
        
       }
     render() {
+       let listOf= Object.keys(this.state.cards_list);
       return <div>
           <ul>
-              {this.state.cards_list.map((card,idx) =>
-                  <li key={idx}>{Object.keys(card)}</li>
-              )}
+          {listOf.map((card,idx) =>
+         <li key={idx}>{card}</li>
+     )}     
           </ul>
-          
+              
       </div>;
     }
-
+    // {this.state.cards_list.map((card,idx) =>
+    //     <li key={idx}>{Object.keys(card)}</li>
+    // )}
     
   }
 
