@@ -21,12 +21,9 @@ import { Component } from 'react';
 
 let cards_list=[];
     let card;
-const Container =() =>{
-  const getapi= () => {
-        
+const Container =() =>
         axios.get("http://api.exchangeratesapi.io/v1/latest?access_key=ea27f11e67cc1a6cb6d066300def6963&format=1").then(
             (response) => {
-                console.log("ENter response");
                 let rates=response.data.rates;
                 for (var key in rates) {
                     card= {
@@ -37,24 +34,17 @@ const Container =() =>{
                     
                 }
                 
-                console.log(cards_list[0].name);
                 
                 
-            }
-
-           
-            
-        );
+                }
+        );  
         return (
             cards_list.map((card) => 
                        <h6>HEllo no is {card.name}</h6>
                     )
-        )
-        
-    };
-  return  getapi();
+        ) 
 
-}
+
 
 
 
