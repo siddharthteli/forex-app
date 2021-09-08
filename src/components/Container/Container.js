@@ -10,14 +10,13 @@ class Container extends React.Component {
     };
   }
   componentDidMount() {
-    axios
-      .get(
-        "http://api.exchangeratesapi.io/v1/latest?access_key=ea27f11e67cc1a6cb6d066300def6963&format=1"
-      )
-      .then((response) => {
-        let rates = response.data.rates;
-        this.setState({ cards_list: rates });
-      });
+    const URL =
+      "http://api.exchangeratesapi.io/v1/latest?access_key=ea27f11e67cc1a6cb6d066300def6963&format=1";
+
+    axios.get(URL).then((response) => {
+      let rates = response.data.rates;
+      this.setState({ cards_list: rates });
+    });
   }
   render() {
     //   let listOf= Object.keys(this.state.cards_list);
@@ -32,8 +31,8 @@ class Container extends React.Component {
     }
     return (
       <div className="grid-wrapper">
-        {listOf.map((card, idx) => (
-          <Cards id_card={idx} name={card.name} price={card.price} />
+        {listOf.map((card, id) => (
+          <Cards id_card={id + 1} name={card.name} price={card.price} />
         ))}
       </div>
     );
